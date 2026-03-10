@@ -16,12 +16,8 @@
   url: https://searchlightnm.org/feed/
 
 # -- Daily newspapers --
-
-- name: Santa Fe New Mexican
-  url: https://www.santafenewmexican.com/search/?f=rss&t=article&c=news
-
-- name: Albuquerque Journal
-  url: https://www.abqjournal.com/feed
+# Note: Santa Fe New Mexican and Albuquerque Journal don't offer reliable public RSS.
+# Their articles are picked up via the Google News catch-all feed below.
 
 # -- TV news --
 
@@ -31,8 +27,7 @@
 - name: KOB 4
   url: https://www.kob.com/feed/
 
-- name: KOAT
-  url: https://www.koat.com/rss/
+# Note: KOAT publishes a malformed RSS feed -- covered by Google News instead.
 
 # -- Google News RSS catch-all (picks up sources without their own RSS) --
 
