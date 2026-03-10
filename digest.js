@@ -21,6 +21,8 @@ const paywalls = yaml.load(fs.readFileSync(path.join(ROOT, 'paywalls.yaml'), 'ut
 // Only include articles published within this many days
 const MAX_AGE_DAYS = 3;
 
+const VERBOSE = process.argv.includes('--verbose');
+
 // ---------------------------------------------------------------------------
 // Database setup
 // ---------------------------------------------------------------------------
@@ -121,6 +123,11 @@ async function main() {
     const now = new Date().toISOString();
     const newArticles = [];
 
+    if (VERBOSE) {
+      console.log(`[verbose] Date cutoff: articles before ${ageCutoff.toISOString()} are skipped`);
+      console.log(`[verbose] Processing ${sources.length} sources...\n`);
+    }
+
     for (const source of sources) {
       let items;
       try {
@@ -130,6 +137,15 @@ async function main() {
         continue;
       }
 
+      if (VERBOSE) {
+        console.log(`[verbose] ${source.name}: fetched ${items.length} items`);
+      }
+
+      let droppedDate = 0;
+      let droppedKeyword = 0;
+      let droppedDup = 0;
+      let added = 0;
+
       for (const item of items) {
         const url = item.link || item.guid;
         const title = (item.title || '').trim();
@@ -138,13 +154,22 @@ async function main() {
         if (!url || !title) continue;
 
         const pubDate = item.pubDate || item.isoDate;
-        if (isTooOld(pubDate)) continue;
+        if (isTooOld(pubDate)) {
+          droppedDate++;
+          continue;
+        }
 
         const matched = matchKeywords(title, description);
-        if (matched.length === 0) continue;
+        if (matched.length === 0) {
+          droppedKeyword++;
+          continue;
+        }
 
         // Skip if already in database
-        if (stmtUrlExists.get(url)) continue;
+        if (stmtUrlExists.get(url)) {
+          droppedDup++;
+          continue;
+        }
 
         stmtInsertArticle.run({
           url,
@@ -165,7 +190,16 @@ async function main() {
           matched,
           paywall: isPaywalled(url),
         });
+        added++;
       }
+
+      if (VERBOSE && (droppedDate > 0 || droppedKeyword > 0 || droppedDup > 0 || added > 0)) {
+        console.log(`[verbose]   -> added: ${added}, dropped (date: ${droppedDate}, keyword: ${droppedKeyword}, dup: ${droppedDup})`);
+      }
+    }
+
+    if (VERBOSE) {
+      console.log(`\n[verbose] Total new articles: ${newArticles.length}`);
     }
 
     if (newArticles.length === 0) {

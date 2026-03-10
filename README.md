@@ -41,8 +41,10 @@ yarn install
 # Run a digest (set env vars first)
 GMAIL_USER=you@example.com \
 GMAIL_APP_PASSWORD=xxxx \
-RECIPIENT_EMAIL=you@example.com \
 node digest.js
+
+# Run with verbose logging (shows fetch counts, filter drops, duplicates)
+node digest.js --verbose
 
 # View all-time source stats
 node stats.js
