@@ -325,7 +325,7 @@ async function sendDigest(articles) {
     html,
   });
 
-  transporter.close();
+  await transporter.close();
   console.log(`Digest sent: ${articles.length} ${articleWord} from ${sourceCount} ${sourceWord}.`);
 }
 
@@ -340,7 +340,9 @@ function escHtml(str) {
 // ---------------------------------------------------------------------------
 // Run
 // ---------------------------------------------------------------------------
-main().catch((err) => {
-  console.error('Fatal:', err.message);
-  process.exit(1);
-});
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error('Fatal:', err.message);
+    process.exit(1);
+  });
