@@ -16,7 +16,9 @@ A lightweight daily news digest that monitors New Mexico news sources for homele
 
 **Add a keyword:** Edit `keywords.yaml` -- one term per line
 
-Both files are plain text. No code changes required.
+**Add a recipient:** Edit `recipients.yaml` -- one email address per line
+
+All config files are plain text. No code changes required.
 
 ## One-time setup
 
@@ -26,7 +28,8 @@ Add three secrets to the repo (Settings > Secrets and variables > Actions):
 |---|---|
 | `GMAIL_USER` | Gmail address to send from |
 | `GMAIL_APP_PASSWORD` | Gmail App Password (16-char code, not your login password) |
-| `RECIPIENT_EMAIL` | Address to deliver the digest to |
+
+Recipients are managed in `recipients.yaml` -- no secrets needed.
 
 Then trigger a manual run to verify: Actions tab > Daily NM Homelessness Digest > Run workflow.
 

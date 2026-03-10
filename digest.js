@@ -15,6 +15,7 @@ const ROOT = __dirname;
 
 const sources = yaml.load(fs.readFileSync(path.join(ROOT, 'sources.yaml'), 'utf8'));
 const keywords = yaml.load(fs.readFileSync(path.join(ROOT, 'keywords.yaml'), 'utf8'));
+const recipients = yaml.load(fs.readFileSync(path.join(ROOT, 'recipients.yaml'), 'utf8'));
 
 // ---------------------------------------------------------------------------
 // Database setup
@@ -234,7 +235,7 @@ async function sendDigest(articles) {
 
   await transporter.sendMail({
     from: `"NM Homelessness Digest" <${process.env.GMAIL_USER}>`,
-    to: process.env.RECIPIENT_EMAIL,
+    to: recipients.join(', '),
     subject,
     text,
     html,
