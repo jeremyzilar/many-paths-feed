@@ -30,11 +30,18 @@
 # Note: KOAT publishes a malformed RSS feed -- covered by Google News instead.
 
 # -- Google News RSS feeds --
-# Catch-all covers sources without direct RSS (including KOAT, Santa Fe New Mexican).
-# ABQ Journal has no public RSS, so a site-scoped search pulls their articles directly.
+# Catch-all covers sources without direct RSS (including KOAT).
+# ABQ Journal, SF New Mexican, and Taos News don't offer reliable public RSS,
+# so site-scoped searches pull their articles directly through Google News.
 
 - name: Google News
   url: https://news.google.com/rss/search?q=homelessness+OR+unhoused+OR+shelter+OR+encampment+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
 
 - name: Albuquerque Journal
   url: https://news.google.com/rss/search?q=site:abqjournal.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
+
+- name: Santa Fe New Mexican
+  url: https://news.google.com/rss/search?q=site:santafenewmexican.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
+
+- name: Taos News
+  url: https://news.google.com/rss/search?q=site:taosnews.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
