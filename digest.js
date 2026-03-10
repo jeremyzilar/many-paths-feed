@@ -235,7 +235,7 @@ async function sendDigest(articles) {
   const articleWord = articles.length === 1 ? 'article' : 'articles';
   const sourceWord = sourceCount === 1 ? 'source' : 'sources';
 
-  const subject = `Many Paths: New Mexico -- ${dateStr} (${articles.length} ${articleWord})`;
+  const subject = `The Many Paths Project - New Mexico -- ${dateStr} (${articles.length} ${articleWord})`;
 
   const topSources = stmtTopSources.all();
   const statsLine = topSources.map((s) => `${s.source_name} (${s.article_count})`).join(', ');
@@ -244,7 +244,7 @@ async function sendDigest(articles) {
   // Plain text body
   // ---------------------------------------------------------------------------
   const divider = '\u2500'.repeat(44);
-  let text = `Many Paths: New Mexico\n${dateStr}\n${divider}\n\n`;
+  let text = `The Many Paths Project\nNew Mexico\n${dateStr}\n${divider}\n\n`;
 
   for (const [sourceName, items] of Object.entries(bySource)) {
     text += `${sourceName}\n`;
@@ -292,7 +292,10 @@ async function sendDigest(articles) {
 <body style="margin:0;padding:0;background:#f9f9f9;">
   <div style="font-family:system-ui,sans-serif;max-width:660px;margin:32px auto;background:#fff;
               border:1px solid #e5e7eb;border-radius:8px;padding:32px;color:#1a1a1a;">
-    <h2 style="margin:0 0 4px;">Many Paths: New Mexico</h2>
+    <div style="text-align:center;background:#f6f8f9;border-radius:6px;padding:20px 24px;margin:0 0 16px;">
+      <div style="font-size:15px;font-weight:500;color:#0d4e61;margin:0 0 4px;">The Many Paths Project</div>
+      <div style="font-size:24px;font-weight:700;color:#eb6123;margin:0;">New Mexico</div>
+    </div>
     <p style="margin:0 0 20px;color:#666;">${escHtml(dateStr)}</p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:0 0 16px;">
     ${sourceRows}
@@ -318,7 +321,7 @@ async function sendDigest(articles) {
   });
 
   await transporter.sendMail({
-    from: `"Many Paths: New Mexico" <${process.env.GMAIL_USER}>`,
+    from: `"The Many Paths Project" <${process.env.GMAIL_USER}>`,
     to: recipients.join(', '),
     subject,
     text,
