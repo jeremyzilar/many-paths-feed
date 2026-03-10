@@ -1,0 +1,49 @@
+# NM news sources -- RSS feed URLs
+# Add new sources here: name + url. No code changes needed.
+
+# -- Local investigative / independent outlets --
+
+- name: Source New Mexico
+  url: https://sourcenm.com/feed/
+
+- name: NM Political Report
+  url: https://nmpoliticalreport.com/feed/
+
+- name: New Mexico In Depth
+  url: https://nmindepth.com/feed/
+
+- name: Searchlight New Mexico
+  url: https://searchlightnm.org/feed/
+
+# -- Daily newspapers --
+
+- name: Santa Fe New Mexican
+  url: https://www.santafenewmexican.com/search/?f=rss&t=article&c=news
+
+- name: Albuquerque Journal
+  url: https://www.abqjournal.com/feed
+
+# -- TV news --
+
+- name: KRQE News
+  url: https://krqe.com/feed/
+
+- name: KOB 4
+  url: https://www.kob.com/feed/
+
+- name: KOAT
+  url: https://www.koat.com/rss/
+
+# -- Google News RSS catch-alls (picks up sources without their own RSS) --
+
+- name: Google News (homelessness NM)
+  url: https://news.google.com/rss/search?q=homelessness+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+
+- name: Google News (shelter NM)
+  url: https://news.google.com/rss/search?q=shelter+%22New+Mexico%22+housing&hl=en-US&gl=US&ceid=US:en
+
+- name: Google News (unhoused NM)
+  url: https://news.google.com/rss/search?q=unhoused+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+
+- name: Google News (encampment NM)
+  url: https://news.google.com/rss/search?q=encampment+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en

@@ -1,0 +1,58 @@
+# Keywords to match in article titles and descriptions (case-insensitive)
+# Add new terms here. No code changes needed.
+
+# -- General terms --
+- homelessness
+- homeless
+- unhoused
+- unsheltered
+- housing insecure
+- housing instability
+- street homelessness
+- literal homelessness
+
+# -- Housing / program types --
+- shelter
+- encampment
+- transitional housing
+- permanent supportive housing
+- rapid rehousing
+- affordable housing
+- supportive housing
+- housing first
+- harm reduction
+- coordinated entry
+- point-in-time count
+
+# -- Systems and frameworks --
+- by-name list
+- HMIS
+- Continuum of Care
+- CoC
+- Built for Zero
+- Community Solutions
+- Heading Home
+
+# -- Santa Fe organizations --
+- The Life Link
+- St. Elizabeth Shelter
+- Interfaith Community Shelter
+- Casa Familia
+- Barrett House
+- Agape House
+- Urban Alchemy
+
+# -- Albuquerque organizations --
+- Casa de Benavidez
+- Joy Junction
+- Albuquerque Healthcare for the Homeless
+- Bernalillo County
+- HopeWorks
+
+# -- Statewide / funding --
+- Department of Workforce Solutions
+- NMDWS
+- Sarita Nair
+- emergency shelter
+- housing voucher
+- Section 8

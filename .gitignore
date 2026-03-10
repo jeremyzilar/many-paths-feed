@@ -1,0 +1,4 @@
+node_modules/
+digest.db
+*.db
+.env

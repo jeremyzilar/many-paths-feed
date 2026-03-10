@@ -1,0 +1,48 @@
+name: Daily NM Homelessness Digest
+
+on:
+  schedule:
+    # 7am MT = 14:00 UTC (summer/MDT). Adjust to 13:00 UTC in winter (MST).
+    - cron: '0 14 * * *'
+  workflow_dispatch: # allows manual trigger from the Actions tab
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Restore the SQLite database from the previous run.
+      # restore-keys: prefix match picks up the most recent saved cache.
+      - name: Restore digest database
+        uses: actions/cache@v4
+        with:
+          path: digest.db
+          key: digest-db-${{ github.run_id }}
+          restore-keys: |
+            digest-db-
+
+      - name: Run digest
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: node digest.js
+
+      # Save the updated database so the next run can restore it.
+      - name: Save digest database
+        uses: actions/cache@v4
+        with:
+          path: digest.db
+          key: digest-db-${{ github.run_id }}
