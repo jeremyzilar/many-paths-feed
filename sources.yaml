@@ -34,16 +34,7 @@
 - name: KOAT
   url: https://www.koat.com/rss/
 
-# -- Google News RSS catch-alls (picks up sources without their own RSS) --
+# -- Google News RSS catch-all (picks up sources without their own RSS) --
 
-- name: Google News (homelessness NM)
-  url: https://news.google.com/rss/search?q=homelessness+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
-
-- name: Google News (shelter NM)
-  url: https://news.google.com/rss/search?q=shelter+%22New+Mexico%22+housing&hl=en-US&gl=US&ceid=US:en
-
-- name: Google News (unhoused NM)
-  url: https://news.google.com/rss/search?q=unhoused+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
-
-- name: Google News (encampment NM)
-  url: https://news.google.com/rss/search?q=encampment+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+- name: Google News
+  url: https://news.google.com/rss/search?q=homelessness+OR+unhoused+OR+shelter+OR+encampment+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en

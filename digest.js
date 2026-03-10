@@ -16,6 +16,10 @@ const ROOT = __dirname;
 const sources = yaml.load(fs.readFileSync(path.join(ROOT, 'sources.yaml'), 'utf8'));
 const keywords = yaml.load(fs.readFileSync(path.join(ROOT, 'keywords.yaml'), 'utf8'));
 const recipients = yaml.load(fs.readFileSync(path.join(ROOT, 'recipients.yaml'), 'utf8'));
+const paywalls = yaml.load(fs.readFileSync(path.join(ROOT, 'paywalls.yaml'), 'utf8'));
+
+// Only include articles published within this many days
+const MAX_AGE_DAYS = 3;
 
 // ---------------------------------------------------------------------------
 // Database setup
@@ -71,9 +75,35 @@ const stmtTopSources = db.prepare(`
 // Helpers
 // ---------------------------------------------------------------------------
 
+const ageCutoff = new Date(Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000);
+
 function matchKeywords(title, description) {
   const text = `${title} ${description}`.toLowerCase();
   return keywords.filter((kw) => text.includes(kw.toLowerCase()));
+}
+
+function isTooOld(pubDate) {
+  if (!pubDate) return false; // no date = don't filter out
+  const d = new Date(pubDate);
+  return !isNaN(d) && d < ageCutoff;
+}
+
+function isPaywalled(url) {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, '');
+    return paywalls.some((domain) => hostname.includes(domain));
+  } catch {
+    return false;
+  }
+}
+
+function getFaviconUrl(url) {
+  try {
+    const hostname = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=16`;
+  } catch {
+    return null;
+  }
 }
 
 async function fetchFeed(source) {
@@ -106,6 +136,9 @@ async function main() {
 
       if (!url || !title) continue;
 
+      const pubDate = item.pubDate || item.isoDate;
+      if (isTooOld(pubDate)) continue;
+
       const matched = matchKeywords(title, description);
       if (matched.length === 0) continue;
 
@@ -117,13 +150,13 @@ async function main() {
         title,
         description: description.slice(0, 600),
         source_name: source.name,
-        pub_date: item.pubDate || item.isoDate || now,
+        pub_date: pubDate || now,
         keywords_matched: matched.join(', '),
       });
 
       stmtUpsertStat.run({ source_name: source.name, now });
 
-      newArticles.push({ title, url, source: source.name, matched });
+      newArticles.push({ title, url, source: source.name, matched, paywall: isPaywalled(url) });
     }
   }
 
@@ -171,7 +204,8 @@ async function sendDigest(articles) {
   for (const [sourceName, items] of Object.entries(bySource)) {
     text += `${sourceName}\n`;
     for (const a of items) {
-      text += `  - ${a.title}\n    ${a.url}\n    keywords: ${a.matched.join(', ')}\n\n`;
+      const paywallNote = a.paywall ? ' [paywall]' : '';
+      text += `  - ${a.title}${paywallNote}\n    ${a.url}\n    keywords: ${a.matched.join(', ')}\n\n`;
     }
   }
 
@@ -185,15 +219,20 @@ async function sendDigest(articles) {
   let sourceRows = '';
   for (const [sourceName, items] of Object.entries(bySource)) {
     const articleItems = items
-      .map(
-        (a) => `
+      .map((a) => {
+        const favicon = getFaviconUrl(a.url);
+        const faviconImg = favicon
+          ? `<img src="${favicon}" width="16" height="16" style="vertical-align:middle;margin-right:5px;border-radius:2px;">`
+          : '';
+        const paywallBadge = a.paywall
+          ? `<span style="display:inline-block;margin-left:6px;padding:1px 5px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:3px;font-size:10px;color:#6b7280;">paywall</span>`
+          : '';
+        return `
         <li style="margin-bottom:12px;">
-          <a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">
-            ${escHtml(a.title)}
-          </a><br>
+          ${faviconImg}<a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">${escHtml(a.title)}</a>${paywallBadge}<br>
           <small style="color:#888;">keywords: ${escHtml(a.matched.join(', '))}</small>
-        </li>`
-      )
+        </li>`;
+      })
       .join('');
 
     sourceRows += `
