@@ -159,7 +159,7 @@ async function main() {
           continue;
         }
 
-        const matched = matchKeywords(title, description);
+        const matched = source.include_all ? ['*'] : matchKeywords(title, description);
         if (matched.length === 0) {
           droppedKeyword++;
           continue;
@@ -187,6 +187,7 @@ async function main() {
           url,
           source: source.name,
           sourceDomain: source.domain || null,
+          section: source.section || 'local',
           matched,
           paywall: isPaywalled(url),
         });
@@ -225,17 +226,27 @@ async function sendDigest(articles) {
     year: 'numeric',
   });
 
-  // Group articles by source
-  const bySource = {};
+  // Section order and display names
+  const SECTION_ORDER = ['local', 'community_solutions', 'coast_to_coast'];
+  const SECTION_LABELS = {
+    local: 'New Mexico',
+    community_solutions: 'Community Solutions',
+    coast_to_coast: 'News Coast to Coast',
+  };
+
+  // Group articles by section, then by source
+  const bySection = {};
   for (const a of articles) {
-    (bySource[a.source] = bySource[a.source] || []).push(a);
+    const sec = a.section || 'local';
+    if (!bySection[sec]) bySection[sec] = {};
+    (bySection[sec][a.source] = bySection[sec][a.source] || []).push(a);
   }
 
-  const sourceCount = Object.keys(bySource).length;
+  const sourceCount = new Set(articles.map((a) => a.source)).size;
   const articleWord = articles.length === 1 ? 'article' : 'articles';
   const sourceWord = sourceCount === 1 ? 'source' : 'sources';
 
-  const subject = `The Many Paths Project - New Mexico -- ${dateStr} (${articles.length} ${articleWord})`;
+  const subject = `Many Paths: New Mexico -- ${dateStr}`;
 
   const topSources = stmtTopSources.all();
   const statsLine = topSources.map((s) => `${s.source_name} (${s.article_count})`).join(', ');
@@ -246,12 +257,19 @@ async function sendDigest(articles) {
   const divider = '\u2500'.repeat(44);
   let text = `The Many Paths Project\nNew Mexico\n${dateStr}\n${divider}\n\n`;
 
-  for (const [sourceName, items] of Object.entries(bySource)) {
-    text += `${sourceName}\n`;
-    for (const a of items) {
-      const paywallNote = a.paywall ? ' [paywall]' : '';
-      text += `  - ${a.title}${paywallNote}\n    ${a.url}\n    keywords: ${a.matched.join(', ')}\n\n`;
+  for (const sectionKey of SECTION_ORDER) {
+    const sectionSources = bySection[sectionKey];
+    if (!sectionSources) continue;
+    text += `${SECTION_LABELS[sectionKey]}\n${divider}\n\n`;
+    for (const [sourceName, items] of Object.entries(sectionSources)) {
+      text += `${sourceName}\n`;
+      for (const a of items) {
+        const paywallNote = a.paywall ? ' [paywall]' : '';
+        const kwLine = a.matched[0] === '*' ? '' : `    keywords: ${a.matched.join(', ')}\n`;
+        text += `  - ${a.title}${paywallNote}\n    ${a.url}\n${kwLine}\n`;
+      }
     }
+    text += '\n';
   }
 
   text += `${divider}\n`;
@@ -262,27 +280,32 @@ async function sendDigest(articles) {
   // HTML body
   // ---------------------------------------------------------------------------
   let sourceRows = '';
-  for (const [sourceName, items] of Object.entries(bySource)) {
-    const articleItems = items
-      .map((a) => {
-        const favicon = getFaviconUrl(a.url, a.sourceDomain);
-        const faviconImg = favicon
-          ? `<img src="${favicon}" width="16" height="16" style="vertical-align:middle;margin-right:5px;border-radius:2px;">`
-          : '';
-        const paywallBadge = a.paywall
-          ? `<span style="display:inline-block;margin-left:6px;padding:1px 5px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:3px;font-size:10px;color:#6b7280;">paywall</span>`
-          : '';
-        return `
+  for (const sectionKey of SECTION_ORDER) {
+    const sectionSources = bySection[sectionKey];
+    if (!sectionSources) continue;
+    sourceRows += `<h2 style="margin:28px 0 12px;color:#0d4e61;font-size:18px;font-weight:600;">${escHtml(SECTION_LABELS[sectionKey])}</h2>`;
+    for (const [sourceName, items] of Object.entries(sectionSources)) {
+      const articleItems = items
+        .map((a) => {
+          const favicon = getFaviconUrl(a.url, a.sourceDomain);
+          const faviconImg = favicon
+            ? `<img src="${favicon}" width="16" height="16" style="vertical-align:middle;margin-right:5px;border-radius:2px;">`
+            : '';
+          const paywallBadge = a.paywall
+            ? `<span style="display:inline-block;margin-left:6px;padding:1px 5px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:3px;font-size:10px;color:#6b7280;">paywall</span>`
+            : '';
+          const kwLine = a.matched[0] === '*' ? '' : `<br><small style="color:#888;">keywords: ${escHtml(a.matched.join(', '))}</small>`;
+          return `
         <li style="margin-bottom:12px;">
-          ${faviconImg}<a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">${escHtml(a.title)}</a>${paywallBadge}<br>
-          <small style="color:#888;">keywords: ${escHtml(a.matched.join(', '))}</small>
+          ${faviconImg}<a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">${escHtml(a.title)}</a>${paywallBadge}${kwLine}
         </li>`;
-      })
-      .join('');
+        })
+        .join('');
 
-    sourceRows += `
+      sourceRows += `
       <h3 style="margin:24px 0 6px;color:#111;font-size:15px;">${escHtml(sourceName)}</h3>
       <ul style="padding-left:18px;margin:0;">${articleItems}</ul>`;
+    }
   }
 
   const html = `
@@ -292,15 +315,15 @@ async function sendDigest(articles) {
 <body style="margin:0;padding:0;background:#f9f9f9;">
   <div style="font-family:system-ui,sans-serif;max-width:660px;margin:32px auto;background:#fff;
               border:1px solid #e5e7eb;border-radius:8px;padding:32px;color:#1a1a1a;">
-    <div style="text-align:center;background:#f6f8f9;border-radius:6px;padding:20px 24px;margin:0 0 16px;">
-      <div style="font-size:15px;font-weight:500;color:#0d4e61;margin:0 0 4px;">The Many Paths Project</div>
-      <div style="font-size:24px;font-weight:700;color:#eb6123;margin:0;">New Mexico</div>
+    <div style="text-align:center;padding:20px 24px;margin:0 0 16px;">
+      <div style="font-size:16px;font-weight:700;color:#0d4e61;margin:0 0 4px;">The Many Paths Project</div>
+      <div style="font-size:40px;font-weight:900;color:#eb6123;margin:0;">New Mexico</div>
     </div>
     <p style="margin:0 0 20px;color:#666;">${escHtml(dateStr)}</p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:0 0 16px;">
     ${sourceRows}
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0 16px;">
-    <p style="margin:0;color:#555;font-size:14px;">
+    <p style="margin:0;color:#555;font-size:16px;">
       <strong>${articles.length} ${articleWord}</strong> from
       <strong>${sourceCount} ${sourceWord}</strong> today.<br>
       Top sources all time: ${escHtml(statsLine)}
