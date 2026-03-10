@@ -39,9 +39,12 @@
 
 - name: Albuquerque Journal
   url: https://news.google.com/rss/search?q=site:abqjournal.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
+  domain: abqjournal.com
 
 - name: Santa Fe New Mexican
   url: https://news.google.com/rss/search?q=site:santafenewmexican.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
+  domain: santafenewmexican.com
 
 - name: Taos News
   url: https://news.google.com/rss/search?q=site:taosnews.com+homelessness+OR+unhoused+OR+shelter+OR+encampment&hl=en-US&gl=US&ceid=US:en
+  domain: taosnews.com

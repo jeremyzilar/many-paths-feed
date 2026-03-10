@@ -97,10 +97,10 @@ function isPaywalled(url) {
   }
 }
 
-function getFaviconUrl(url) {
+function getFaviconUrl(articleUrl, sourceDomain) {
   try {
-    const hostname = new URL(url).hostname;
-    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=16`;
+    const domain = sourceDomain || new URL(articleUrl).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=16`;
   } catch {
     return null;
   }
@@ -117,55 +117,66 @@ async function fetchFeed(source) {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  const now = new Date().toISOString();
-  const newArticles = [];
+  try {
+    const now = new Date().toISOString();
+    const newArticles = [];
 
-  for (const source of sources) {
-    let items;
-    try {
-      items = await fetchFeed(source);
-    } catch (err) {
-      console.warn(`[SKIP] ${source.name}: ${err.message}`);
-      continue;
+    for (const source of sources) {
+      let items;
+      try {
+        items = await fetchFeed(source);
+      } catch (err) {
+        console.warn(`[SKIP] ${source.name}: ${err.message}`);
+        continue;
+      }
+
+      for (const item of items) {
+        const url = item.link || item.guid;
+        const title = (item.title || '').trim();
+        const description = (item.contentSnippet || item.content || item.summary || '').trim();
+
+        if (!url || !title) continue;
+
+        const pubDate = item.pubDate || item.isoDate;
+        if (isTooOld(pubDate)) continue;
+
+        const matched = matchKeywords(title, description);
+        if (matched.length === 0) continue;
+
+        // Skip if already in database
+        if (stmtUrlExists.get(url)) continue;
+
+        stmtInsertArticle.run({
+          url,
+          title,
+          description: description.slice(0, 600),
+          source_name: source.name,
+          pub_date: pubDate || now,
+          keywords_matched: matched.join(', '),
+        });
+
+        stmtUpsertStat.run({ source_name: source.name, now });
+
+        newArticles.push({
+          title,
+          url,
+          source: source.name,
+          sourceDomain: source.domain || null,
+          matched,
+          paywall: isPaywalled(url),
+        });
+      }
     }
 
-    for (const item of items) {
-      const url = item.link || item.guid;
-      const title = (item.title || '').trim();
-      const description = (item.contentSnippet || item.content || item.summary || '').trim();
-
-      if (!url || !title) continue;
-
-      const pubDate = item.pubDate || item.isoDate;
-      if (isTooOld(pubDate)) continue;
-
-      const matched = matchKeywords(title, description);
-      if (matched.length === 0) continue;
-
-      // Skip if already in database
-      if (stmtUrlExists.get(url)) continue;
-
-      stmtInsertArticle.run({
-        url,
-        title,
-        description: description.slice(0, 600),
-        source_name: source.name,
-        pub_date: pubDate || now,
-        keywords_matched: matched.join(', '),
-      });
-
-      stmtUpsertStat.run({ source_name: source.name, now });
-
-      newArticles.push({ title, url, source: source.name, matched, paywall: isPaywalled(url) });
+    if (newArticles.length === 0) {
+      console.log('No new articles today. No email sent.');
+      return;
     }
-  }
 
-  if (newArticles.length === 0) {
-    console.log('No new articles today. No email sent.');
-    return;
+    await sendDigest(newArticles);
+  } finally {
+    db.close();
   }
-
-  await sendDigest(newArticles);
 }
 
 // ---------------------------------------------------------------------------
@@ -190,7 +201,7 @@ async function sendDigest(articles) {
   const articleWord = articles.length === 1 ? 'article' : 'articles';
   const sourceWord = sourceCount === 1 ? 'source' : 'sources';
 
-  const subject = `NM Homelessness News -- ${dateStr} (${articles.length} ${articleWord})`;
+  const subject = `Many Paths: New Mexico -- ${dateStr} (${articles.length} ${articleWord})`;
 
   const topSources = stmtTopSources.all();
   const statsLine = topSources.map((s) => `${s.source_name} (${s.article_count})`).join(', ');
@@ -199,7 +210,7 @@ async function sendDigest(articles) {
   // Plain text body
   // ---------------------------------------------------------------------------
   const divider = '\u2500'.repeat(44);
-  let text = `NM Homelessness News Digest\n${dateStr}\n${divider}\n\n`;
+  let text = `Many Paths: New Mexico\n${dateStr}\n${divider}\n\n`;
 
   for (const [sourceName, items] of Object.entries(bySource)) {
     text += `${sourceName}\n`;
@@ -220,7 +231,7 @@ async function sendDigest(articles) {
   for (const [sourceName, items] of Object.entries(bySource)) {
     const articleItems = items
       .map((a) => {
-        const favicon = getFaviconUrl(a.url);
+        const favicon = getFaviconUrl(a.url, a.sourceDomain);
         const faviconImg = favicon
           ? `<img src="${favicon}" width="16" height="16" style="vertical-align:middle;margin-right:5px;border-radius:2px;">`
           : '';
@@ -247,7 +258,7 @@ async function sendDigest(articles) {
 <body style="margin:0;padding:0;background:#f9f9f9;">
   <div style="font-family:system-ui,sans-serif;max-width:660px;margin:32px auto;background:#fff;
               border:1px solid #e5e7eb;border-radius:8px;padding:32px;color:#1a1a1a;">
-    <h2 style="margin:0 0 4px;">NM Homelessness News Digest</h2>
+    <h2 style="margin:0 0 4px;">Many Paths: New Mexico</h2>
     <p style="margin:0 0 20px;color:#666;">${escHtml(dateStr)}</p>
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:0 0 16px;">
     ${sourceRows}
@@ -273,13 +284,14 @@ async function sendDigest(articles) {
   });
 
   await transporter.sendMail({
-    from: `"NM Homelessness Digest" <${process.env.GMAIL_USER}>`,
+    from: `"Many Paths: New Mexico" <${process.env.GMAIL_USER}>`,
     to: recipients.join(', '),
     subject,
     text,
     html,
   });
 
+  transporter.close();
   console.log(`Digest sent: ${articles.length} ${articleWord} from ${sourceCount} ${sourceWord}.`);
 }
 
