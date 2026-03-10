@@ -274,7 +274,18 @@ async function sendDigest(articles) {
 
   text += `${divider}\n`;
   text += `${articles.length} ${articleWord} from ${sourceCount} ${sourceWord} today.\n`;
-  text += `Top sources all time: ${statsLine}\n`;
+  text += `Top sources all time: ${statsLine}\n\n`;
+
+  // Footer: keywords and sources
+  text += `${divider}\n`;
+  text += `Keywords (articles match any of these):\n`;
+  text += keywords.join(', ') + '\n\n';
+  text += `Sources monitored (${sources.length} total):\n`;
+  for (const sectionKey of SECTION_ORDER) {
+    const sectionSources = sources.filter((s) => (s.section || 'local') === sectionKey);
+    if (sectionSources.length === 0) continue;
+    text += `  ${SECTION_LABELS[sectionKey]}: ${sectionSources.map((s) => s.name).join(', ')}\n`;
+  }
 
   // ---------------------------------------------------------------------------
   // HTML body
@@ -323,11 +334,21 @@ async function sendDigest(articles) {
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:0 0 16px;">
     ${sourceRows}
     <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0 16px;">
-    <p style="margin:0;color:#555;font-size:16px;">
+    <p style="margin:0;color:#555;font-size:14px;">
       <strong>${articles.length} ${articleWord}</strong> from
       <strong>${sourceCount} ${sourceWord}</strong> today.<br>
       Top sources all time: ${escHtml(statsLine)}
     </p>
+    <div style="margin-top:24px;padding:16px;background:#f6f8f9;border-radius:6px;font-size:12px;color:#555;">
+      <p style="margin:0 0 8px;font-weight:600;color:#0d4e61;">Keywords</p>
+      <p style="margin:0 0 16px;line-height:1.5;">Articles are included when the title or description matches any of these terms: ${escHtml(keywords.join(', '))}</p>
+      <p style="margin:0 0 8px;font-weight:600;color:#0d4e61;">Sources monitored (${sources.length} total)</p>
+      ${SECTION_ORDER.map((sk) => {
+        const sectionSources = sources.filter((s) => (s.section || 'local') === sk);
+        if (sectionSources.length === 0) return '';
+        return `<p style="margin:0 0 4px;"><strong>${escHtml(SECTION_LABELS[sk])}:</strong> ${escHtml(sectionSources.map((s) => s.name).join(', '))}</p>`;
+      }).join('')}
+    </div>
   </div>
 </body>
 </html>`;
