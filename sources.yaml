@@ -128,3 +128,4 @@
 - name: Google News
   section: coast_to_coast
   url: https://news.google.com/rss/search?q=homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+  include_all: true
