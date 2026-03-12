@@ -306,9 +306,10 @@ async function sendDigest(articles) {
             ? `<span style="display:inline-block;margin-left:6px;padding:1px 5px;background:#f3f4f6;border:1px solid #d1d5db;border-radius:3px;font-size:10px;color:#6b7280;">paywall</span>`
             : '';
           const kwLine = a.matched[0] === '*' ? '' : `<br><small style="color:#888;">keywords: ${escHtml(a.matched.join(', '))}</small>`;
+          const urlLine = `<br><small style="color:#6b7280;font-size:12px;word-break:break-all;">${escHtml(a.url)}</small>`;
           return `
         <li style="margin-bottom:12px;">
-          ${faviconImg}<a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">${escHtml(a.title)}</a>${paywallBadge}${kwLine}
+          ${faviconImg}<a href="${escHtml(a.url)}" style="font-weight:600;color:#1a56db;text-decoration:none;">${escHtml(a.title)}</a>${paywallBadge}${urlLine}${kwLine}
         </li>`;
         })
         .join('');

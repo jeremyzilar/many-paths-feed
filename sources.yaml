@@ -37,119 +37,119 @@
 # -- NM newspapers (site-scoped Google News) --
 - name: Santa Fe New Mexican
   section: local
-  url: https://news.google.com/rss/search?q=site:santafenewmexican.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:santafenewmexican.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: santafenewmexican.com
 
 - name: Albuquerque Journal
   section: local
-  url: https://news.google.com/rss/search?q=site:abqjournal.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:abqjournal.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: abqjournal.com
 
 - name: Taos News
   section: local
-  url: https://news.google.com/rss/search?q=site:taosnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:taosnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: taosnews.com
 
 - name: Las Cruces Sun-News
   section: local
-  url: https://news.google.com/rss/search?q=site:lcsun-news.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:lcsun-news.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: lcsun-news.com
 
 - name: Farmington Daily Times
   section: local
-  url: https://news.google.com/rss/search?q=site:daily-times.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:daily-times.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: daily-times.com
 
 - name: Gallup Independent
   section: local
-  url: https://news.google.com/rss/search?q=site:gallupindependent.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:gallupindependent.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: gallupindependent.com
 
 - name: Roswell Daily Record
   section: local
-  url: https://news.google.com/rss/search?q=site:rdrnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:rdrnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: rdrnews.com
 
 - name: Carlsbad Current-Argus
   section: local
-  url: https://news.google.com/rss/search?q=site:currentargus.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:currentargus.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: currentargus.com
 
 - name: Alamogordo Daily News
   section: local
-  url: https://news.google.com/rss/search?q=site:alamogordonews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:alamogordonews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: alamogordonews.com
 
 - name: Ruidoso News
   section: local
-  url: https://news.google.com/rss/search?q=site:ruidosonews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:ruidosonews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: ruidosonews.com
 
 - name: Hobbs News-Sun
   section: local
-  url: https://news.google.com/rss/search?q=site:hobbsnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:hobbsnews.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: hobbsnews.com
 
 # -- Albuquerque-focused (city gov, local news, nonprofits) --
 - name: City of Albuquerque (cabq.gov)
   section: local
-  url: https://news.google.com/rss/search?q=site:cabq.gov+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+shelter+OR+encampment+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+gateway+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:cabq.gov+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+encampment+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+gateway+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: cabq.gov
 
 - name: City Desk
   section: local
-  url: https://news.google.com/rss/search?q=site:citydesk.org+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:citydesk.org+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+encampment+OR+encampments+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
   domain: citydesk.org
 
 - name: Pete Dinelli
   section: local
-  url: https://news.google.com/rss/search?q=site:petedinelli.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+housing+OR+shelter+OR+encampment+OR+budget&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:petedinelli.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+housing+OR+encampment+OR+budget&hl=en-US&gl=US&ceid=US:en
   domain: petedinelli.com
 
 - name: NM News
   section: local
-  url: https://news.google.com/rss/search?q=site:nm.news+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+shelter+OR+encampment+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:nm.news+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+encampment+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
   domain: nm.news
 
 - name: KUNM
   section: local
-  url: https://news.google.com/rss/search?q=site:kunm.org+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+shelter+OR+encampment+OR+%22affordable+housing%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:kunm.org+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+encampment+OR+%22affordable+housing%22+OR+gateway&hl=en-US&gl=US&ceid=US:en
   domain: kunm.org
 
 - name: Heading Home
   section: local
-  url: https://news.google.com/rss/search?q=site:headinghome.org+homelessness+OR+homeless+OR+unhoused+OR+housing+OR+shelter&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:headinghome.org+homelessness+OR+homeless+OR+unhoused+OR+housing&hl=en-US&gl=US&ceid=US:en
   domain: headinghome.org
 
 - name: One ABQ Volunteers
   section: local
-  url: https://news.google.com/rss/search?q=site:oneabqvolunteers.com+homelessness+OR+homeless+OR+housing+OR+shelter&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:oneabqvolunteers.com+homelessness+OR+homeless+OR+housing&hl=en-US&gl=US&ceid=US:en
   domain: oneabqvolunteers.com
 
 - name: Funds for NGOs
   section: local
-  url: https://news.google.com/rss/search?q=site:us.fundsforngos.org+albuquerque+OR+homelessness+OR+homeless+OR+shelter+OR+housing&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:us.fundsforngos.org+albuquerque+OR+homelessness+OR+homeless+OR+housing&hl=en-US&gl=US&ceid=US:en
   domain: us.fundsforngos.org
 
 - name: ProPublica
   section: local
-  url: https://news.google.com/rss/search?q=site:propublica.org+albuquerque+OR+%22New+Mexico%22+homelessness+OR+homeless+OR+unhoused+OR+encampment+OR+shelter&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:propublica.org+albuquerque+OR+%22New+Mexico%22+homelessness+OR+homeless+OR+unhoused+OR+encampment&hl=en-US&gl=US&ceid=US:en
   domain: propublica.org
 
 # -- Tribal / Native news --
 - name: Native News Online
   section: local
-  url: https://news.google.com/rss/search?q=site:nativenewsonline.net+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:nativenewsonline.net+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
   domain: nativenewsonline.net
 
 - name: Navajo Times
   section: local
-  url: https://news.google.com/rss/search?q=site:navajotimes.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:navajotimes.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22&hl=en-US&gl=US&ceid=US:en
   domain: navajotimes.com
 
 - name: Indianz.Com
   section: local
-  url: https://news.google.com/rss/search?q=site:indianz.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=site:indianz.com+homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
   domain: indianz.com
 
 # =============================================================================
@@ -173,5 +173,5 @@
 
 - name: Google News
   section: coast_to_coast
-  url: https://news.google.com/rss/search?q=homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+shelter+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
+  url: https://news.google.com/rss/search?q=homelessness+OR+homeless+OR+unhoused+OR+unsheltered+OR+%22housing+insecure%22+OR+%22housing+instability%22+OR+%22street+homelessness%22+OR+%22literal+homelessness%22+OR+encampment+OR+encampments+OR+%22emergency+services%22+OR+%22transitional+housing%22+OR+%22permanent+supportive+housing%22+OR+%22rapid+rehousing%22+OR+%22affordable+housing%22+OR+%22supportive+housing%22+OR+%22housing+first%22+OR+%22harm+reduction%22+OR+%22coordinated+entry%22+OR+%22point-in-time+count%22+%22New+Mexico%22&hl=en-US&gl=US&ceid=US:en
   include_all: true
